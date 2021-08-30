@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- <script src="script.js"></script> -->
+    <title>Contact!</title>
+    <style>
+        body {
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Get in touch!</h1>
+
+
+
+        <label for="email">Email address</label>
+        <input type="email" class="form-control" id="email" placeholder="Enter your email address">
+
+        <label for="Name">Name</label>
+        <input type="text" class="form-control" id="name">
+        <label for="fatherName">Fathers Name</label>
+        <input type="text" class="form-control" id="fathername">
+        <label for="collegeName">Name of Institution</label>
+        <input type="text" class="form-control" id="collegeName">
+
+        <label for="Gender">Gender :-</label>
+
+        <label for="Gender">Male</label>
+        <input type="radio" id="male">
+
+        <label for="Gender">Female</label>
+        <input type="radio" id="female">
+        <br>
+        <label for="Phone">Phone Number</label><br>
+        <input type="text" class="form-control" id="phone">
+        <label for="Date">D.O.B</label><br>
+        <input type="date"><br><br>
+        <input type="button" id="submit" onclick="submitt()" value="submit" class="btn btn-primary">
+
+
+        <br>
+        <h5 id="error"></h5>
+
+    </div>
+    <script>
+        const regNumber = /\d/;
+        const regLetters = /[a-zA-Z]/g;
+
+        function submitt() {
+            var name = document.getElementById('name');
+            var email = document.getElementById('email');
+            var errorString = "";
+            var fathername = document.getElementById('fathername');
+            var college = document.getElementById('collegeName');
+            var phone = document.getElementById('phone');
+            var male = document.getElementById('male');
+            var female = document.getElementById('female');
+            var error = document.getElementById('error');
+            if (name.value == "" || fathername.value == "" || college.value == "" || email.value == "" || phone.value == "") {
+                errorString = errorString + "Field can't be empty.";
+            }
+            if (phone.value.length > 10 || phone.value.length < 10) {
+                errorString = errorString + "Phone must be of 10 digits.";
+            }
+            if (!email.value.includes("@gmail.com")) {
+                errorString = errorString + "Email must contain @gmail.com.";
+            }
+            if (regNumber.test(name.value)) {
+                errorString = "Name field can't contains numbers.";
+            }
+            if (regNumber.test(fathername.value)) {
+                errorString = errorString + "Fathername field can't contain numbers.";
+            }
+            if (regNumber.test(college.value)) {
+                errorString = errorString + "collegename field can't contain numbers.";
+            }
+            if (regLetters.test(phone.value)) {
+                errorString = errorString + "Phone Number can't contain letters.";
+            }
+            if (!male.checked || !female.checked) {
+                errorString = errorString + "person can't be without any gender.Please select atleast one gender."
+            }
+
+            error.innerHTML = errorString;
+        }
+    </script>
+</body>
+
+</html>
