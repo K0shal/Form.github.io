@@ -72,6 +72,9 @@
             if (phone.value.length > 10 || phone.value.length < 10) {
                 errorString = errorString + "Phone must be of 10 digits.";
             }
+            if (email.value.length < 11) {
+                errorString = errorString + "PLease provide a valid Email address.";
+            }
             if (!email.value.includes("@gmail.com")) {
                 errorString = errorString + "Email must contain @gmail.com.";
             }
@@ -87,7 +90,7 @@
             if (regLetters.test(phone.value)) {
                 errorString = errorString + "Phone Number can't contain letters.";
             }
-            if (!male.checked || !female.checked) {
+            if (!male.checked && !female.checked) {
                 errorString = errorString + "person can't be without any gender.Please select atleast one gender."
             }
 
